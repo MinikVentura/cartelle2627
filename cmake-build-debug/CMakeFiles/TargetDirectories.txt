@@ -1,0 +1,3 @@
+C:/Users/minik/CLionProjects/cartelle2627/cmake-build-debug/CMakeFiles/cartelle2627.dir
+C:/Users/minik/CLionProjects/cartelle2627/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/minik/CLionProjects/cartelle2627/cmake-build-debug/CMakeFiles/rebuild_cache.dir
