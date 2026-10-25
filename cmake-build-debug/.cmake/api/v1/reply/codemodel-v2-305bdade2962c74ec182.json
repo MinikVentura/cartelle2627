@@ -2,11 +2,12 @@
 	"configurations" : 
 	[
 		{
+			"abstractTargets" : [],
 			"directories" : 
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f040eec181a89de70dbe.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.29"
@@ -39,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "cartelle2627::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-cartelle2627-Debug-80cda1a9865d7a1de1af.json",
+					"jsonFile" : "target-cartelle2627-Debug-386bf98d1ca4220e2c26.json",
 					"name" : "cartelle2627",
 					"projectIndex" : 0
 				}
@@ -55,6 +56,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 10
 	}
 }

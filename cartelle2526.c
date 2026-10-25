@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define gente 20
-#define PARTIDOS_EQUIPO 1
+#define gente 22
+#define PARTIDOS_EQUIPO 6
 char criterioOrden[20];
 typedef enum { minutos, partidos, titularidades, goles, minP, amarillas} Criterio;
 
@@ -14,6 +14,47 @@ const char *cambiadosC1[] = {"Nunez", "Vasco", "Bacelar", "Brian", "Rodrigo", "R
 const char *golesC1[] = {""};
 const char *amarillasC1[] = {"Duque", "Brais"};
 int cambiosC1[7] = {45, 45, 62, 75, 90, 90, 90};
+
+/*Liga 1*/
+const char *titulares1[] = {"Conde", "Vasco", "Izan","Jose", "Samu", "Brian", "Noel", "Duque", "David", "Gus", "Bacelar"};
+const char *suplentes1[] = {"Raul", "Leco", "Nunez", "Juvenil", "Brais"};
+const char *cambiados1[] = {"Conde", "Vasco", "Bacelar", "Duque", "Gus"};
+const char *goles1[] = {""};
+const char *amarillas1[] = {"Gus", "Juvenil"};
+int cambios1[5] = {45, 45, 45, 50, 71};
+
+/*Liga 2*/
+const char *titulares2[] = {"Raul", "Vasco", "Izan","Jose", "Juvenil", "Brian", "Noel", "Gus", "David", "Leco", "Nunez"};
+const char *suplentes2[] = {"Villa", "Brais", "Bacelar", "Conde", "Rodrigo"};
+const char *cambiados2[] = {"Juvenil", "Noel", "Nunez", "Villa", "Rodrigo"};
+const char *goles2[] = {"Gus", "David", "Bacelar"};
+const char *amarillas2[] = {"Gus", "Jose", "Brais"};
+int cambios2[5] = {45, 70, 75, 85, 90};
+
+/*Liga 3*/
+const char *titulares3[] = {"Raul", "Vasco", "Izan","Jose", "Duque", "Brais", "David", "Gus", "Bacelar", "Villa", "Nunez"};
+const char *suplentes3[] = {"Brian", "Juvenil", "Leco", "Noel", "Conde"};
+const char *cambiados3[] = {"Brais", "Duque", "Bacelar", "Villa", "Gus"};
+const char *goles3[] = {"Bacelar", "David", "Villa", "Villa", "Nunez", "Nunez", "Leco", "Nunez"};
+const char *amarillas3[] = {};
+int cambios3[5] = {45, 45, 54, 60, 72};
+
+/*Liga 4*/
+const char *titulares4[] = {"Raul", "Vasco", "Izan","Jose", "Samu", "Brian", "David", "Gus", "Bacelar", "Leco", "Nunez"};
+const char *suplentes4[] = {"Juvenil", "Noel", "Villa", "Brais", "Conde"};
+const char *cambiados4[] = {"Vasco", "Brian", "Bacelar", "Nunez", "Gus"};
+const char *goles4[] = {"Bacelar", "Samu"};
+const char *amarillas4[] = {};
+int cambios4[5] = {57, 57, 57, 62, 85};
+
+/*Liga 5*/
+const char *titulares5[] = {"Raul", "Duque", "Izan","Jose", "Samu", "Brais", "David", "Gus", "Noel", "Leco", "Nunez"};
+const char *suplentes5[] = {"Brian", "Bacelar", "German", "Vasco", "Conde"};
+const char *cambiados5[] = {"Nunez", "Brais", "Leco", "Izan", "Duque"};
+const char *goles5[] = {"Nunez"};
+const char *amarillas5[] = {"Brais"};
+int cambios5[5] = {45, 45, 62, 70, 87};
+
 
 typedef struct {
     char *nombre;
@@ -177,10 +218,9 @@ void ordenar(const char *criterio) {
 
 void anomalias(){
   for (int j = 0; j < gente; j++) {
-    if (strcmp(lJugador[j]->nombre, "Villa") == 0){ //expulsion vs Peroxa
-      lJugador[j]->minutos -= 47;
+    if (strcmp(lJugador[j]->nombre, "Villa") == 0){ //sale 2 veces vs Cibran
+      lJugador[j]->minutos -= 5;
       lJugador[j]->minP = lJugador[j]->minutos /lJugador[j]->partidos;
-      lJugador[j]->rojas += 1;
     }
   }
 }
@@ -201,10 +241,15 @@ void calcularPorcentajes(void) {
 }
 
 int main(){
-    const char *nombres[] = {"Conde", "Samu", "Rodrigo", "Vasco", "Izan", "David", "Bacelar", "Duque", "Brais", "Yago", "Villa", "Jose", "Brian", "Raul", "Juvenil", "Noel", "Seara", "Requejo", "Nunez", "Gus"};
+    const char *nombres[] = {"Conde", "Samu", "Rodrigo", "Vasco", "Izan", "David", "Bacelar", "Duque", "Brais", "Yago", "Villa", "Jose", "Brian", "Raul", "Juvenil", "Noel", "Seara", "Requejo", "Nunez", "Gus", "Leco", "German"};
     crearJugadores(nombres);
     jornada(titularesC1, suplentesC1, golesC1, 0, cambiosC1, cambiadosC1, amarillasC1, 2, 7, 1);
-    //anomalias();
+    jornada(titulares1, suplentes1, goles1, 0, cambios1, cambiados1, amarillas1, 2, 5, 2);
+    jornada(titulares2, suplentes2, goles2, 3, cambios2, cambiados2, amarillas2, 3, 5, 3);
+    jornada(titulares3, suplentes3, goles3, 8, cambios3, cambiados3, amarillas3, 0, 5, 4);
+    jornada(titulares4, suplentes4, goles4, 2, cambios4, cambiados4, amarillas4, 0, 5, 5);
+    jornada(titulares5, suplentes5, goles5, 1, cambios5, cambiados5, amarillas5, 1, 5, 6);
+    anomalias();
     calcularPorcentajes();
     ordenar("minutos");
     printJugadores();
